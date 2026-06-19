@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  flatnotes:
+    container_name: flatnotes
+    image: ghcr.io/memny/flatnotes:sha-35dba29
+    environment:
+      PUID: 1000
+      PGID: 1000
+      FLATNOTES_AUTH_TYPE: "none"
+    volumes:
+      - ${HOME}/Documents/flatnotes:/data
+      # Optional. Allows you to save the search index in a different location: 
+      # - "./index:/data/.flatnotes"
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
